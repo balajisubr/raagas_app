@@ -12,9 +12,15 @@ class DeityController < ApplicationController
       render :json => {"error" => "No Bhajans found".to_s}.to_json
     end
   end
+
   def lookup_all
     names_list = Deity.find(:all).map{|x| x.name}
     render :json => {"names_list" => names_list}.to_json
   end
+
+  def count
+    render :json => {:count => Bhajan.count}.to_json
+  end 
+
 end
 

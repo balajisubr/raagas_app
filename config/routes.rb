@@ -13,7 +13,11 @@ RaagasApp::Application.routes.draw do
   match 'find_bhajans/:name.json' => 'bhajan#search'
   match 'lookup_bhajans/:name.json' => 'bhajan#lookup'
   match 'lookup_all/bhajans.json' => 'bhajan#lookup_all'
-  match 'play/song.mp3' => 'bhajan#play' 
+  match 'play/:song' => 'bhajan#play'
+
+  match 'bhajan_count' => 'bhajan#count'
+  match 'raaga_count' => 'raaga#count'
+  match 'deity_count' => 'deity#count'
 
   # Keep in mind you can assign values other than :controller and :action
 

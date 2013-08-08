@@ -1,11 +1,10 @@
 class BhajanController < ApplicationController
+  attr_accessor :bhajan_details
   def search
     if(bhajan = Bhajan.find_by_name(params[:name]))
-       #bhajans = Bhajan.find_by_raaga(raaga.id)
-       #bhajan_name = bhajan.name
       begin
-      bhajan_details = Bhajan.find_details(bhajan.name)
-      render :json => bhajan_details.to_json
+        bhajan_details = Bhajan.find_details(bhajan.name)
+        render :json => bhajan_details.to_json
       end
     else
       render :json => {"error" => "No such bhajan".to_s}.to_json
@@ -28,10 +27,14 @@ class BhajanController < ApplicationController
     end
   end
 
+  def count
+    render :json => {:count => Bhajan.count}.to_json
+  end
+
   def play
     #render :json => {"file" => File.new('/home/saibalaji/Desktop/bhajan.mp3')}.to_json
     #render :file => '/home/saibalaji/Desktop/bhajan.mp3', :content_type => 'audio/mpeg'
-    send_file '/home/saibalaji/Desktop/blind_willie.mp3', :type => "audio/mpeg" 
+    send_file params[:song] + '.mp3', :type => "audio/mpeg" 
     #file_path = File.split('/home/saibalaji/Desktop/bhajan.mp3')
     #render :mp3 => File.new(file_path[0]+'/'+file_path[1]), :content_type => 'audio/mpeg'
     #respond_to do |format|
