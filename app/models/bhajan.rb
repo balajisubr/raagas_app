@@ -4,14 +4,15 @@ set_primary_key :name
 
   def self.find_details(bhajan_name)
     bhajan = Bhajan.find(bhajan_name)
-    raaga = Raaga.find(bhajan.raaga).name
+    raaga = Raaga.find(bhajan.raaga).name if bhajan.raaga
+    deity = Deity.find(bhajan.deity).name if bhajan.deity
     url = bhajan.radiosai_url 
     bhajan_details = {
-      :raaga   => raaga, 
-      :lyrics  => bhajan.lyrics, 
-      :meaning => bhajan.meaning, 
-      :url     => bhajan.radiosai_url || bhajan.server_url,
-      :deity   => Deity.find(bhajan.deity).name
+      :raaga   => raaga || '', 
+      :lyrics  => bhajan.lyrics || '', 
+      :meaning => bhajan.meaning || '', 
+      :url     => bhajan.radiosai_url || ('http://192.168.1.70:3000/play/' + bhajan.server_url),
+      :deity   => deity || ''
       }
     bhajan_details
   end

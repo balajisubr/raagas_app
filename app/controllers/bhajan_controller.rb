@@ -1,6 +1,7 @@
 class BhajanController < ApplicationController
   attr_accessor :bhajan_details
   def search
+    sleep 3
     if(bhajan = Bhajan.find_by_name(params[:name]))
       begin
         bhajan_details = Bhajan.find_details(bhajan.name)
@@ -34,7 +35,7 @@ class BhajanController < ApplicationController
   def play
     #render :json => {"file" => File.new('/home/saibalaji/Desktop/bhajan.mp3')}.to_json
     #render :file => '/home/saibalaji/Desktop/bhajan.mp3', :content_type => 'audio/mpeg'
-    send_file params[:song] + '.mp3', :type => "audio/mpeg" 
+    send_file '/home/saibalaji/bhajans/'+params[:song] + '.mp3', :type => "audio/mpeg" 
     #file_path = File.split('/home/saibalaji/Desktop/bhajan.mp3')
     #render :mp3 => File.new(file_path[0]+'/'+file_path[1]), :content_type => 'audio/mpeg'
     #respond_to do |format|

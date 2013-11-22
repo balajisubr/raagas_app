@@ -9,7 +9,7 @@ class RaagaController < ApplicationController
       render :json => {"bhajan_names"=>bhajans}.to_json
       end
     else
-      render :json => {"error" => "No Bhajans found".to_s}.to_json
+      render :json => {"error" => "No Bhajans in raaga #{params[:name]} found".to_s}.to_json
     end
   end
 
