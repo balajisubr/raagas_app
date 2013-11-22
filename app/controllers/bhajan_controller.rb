@@ -1,7 +1,6 @@
 class BhajanController < ApplicationController
   attr_accessor :bhajan_details
   def search
-    sleep 3
     if(bhajan = Bhajan.find_by_name(params[:name]))
       begin
         bhajan_details = Bhajan.find_details(bhajan.name)
