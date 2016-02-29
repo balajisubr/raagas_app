@@ -1,0 +1,14 @@
+ Ganesh       |  1
+ Shirdi Sai   |  2
+ Sathya Sai   |  3
+ Allah        |  4
+ Devi         |  5
+ Sarva Dharma |  6
+ Venkatesha   |  7
+ Rama         |  8
+ Shiva        |  9
+ Krishna      | 10
+ Narayana     | 11
+ Deity        | 12
+ Hari         | 13
+
